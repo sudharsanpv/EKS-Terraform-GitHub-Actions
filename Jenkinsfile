@@ -25,6 +25,7 @@ pipeline {
         stage('Init') {
             steps {
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                    echo 'Initializing Terraform backend with reconfiguration...'
                 sh 'terraform -chdir=eks/ init -reconfigure'
                 }
             }
